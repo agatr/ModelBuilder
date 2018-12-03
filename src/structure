@@ -1,0 +1,16 @@
+- ModelParent
+-- ModelDefinition
+--- ModelSettings
+---- type
+---- (confodencelvl)
+---- data source
+--- PredefinedVariables
+---- Countries
+---- Indicators
+--- ModelVariables
+-- ModelData
+-- ModelOutput
+--- ModelEquation
+--- ModelStrength
+--- VariablesDescriptiveStatistics
+--- Graph

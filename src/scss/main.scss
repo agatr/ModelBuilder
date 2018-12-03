@@ -1,0 +1,54 @@
+@import '/partials/header.scss';
+@import '/partials/footer.scss';
+@import '/partials/content.scss';
+@import '/partials/sidebar.scss';
+
+body {
+  background-color: orange;
+}
+
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1em;
+  grid-template-areas:
+          "header"
+          "sidebar"
+          "content"
+          "footer"
+}
+/*custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+
+}
+/*Extra small devices, phones*/
+@media only screen and (min-width: 480px) {
+
+}
+/*Small devices, Tablets*/
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: 30% auto;
+    grid-template-areas:
+            "header header"
+            "sidebar content"
+            "content content"
+            "footer footer"
+  }
+}
+/*Medium devices, Desktop*/
+@media only screen and (min-width: 992px) {
+  .wrapper {
+    grid-template-columns: 40% auto;
+    grid-template-areas:
+            "header header"
+            "sidebar content"
+            "content content"
+            "footer footer"
+  }
+}
+/*Large devices, Wide screens*/
+@media only screen and (min-width: 1200px) {
+
+}
+
