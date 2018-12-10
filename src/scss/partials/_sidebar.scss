@@ -1,21 +1,63 @@
-.sidebar {
-  background-color: darkgreen;
+.model-definition {
+  grid-area: model-definition;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "model-settings" "predefined-variables";
+  padding: 1em 1em 0 1em;
 }
-/*custom, iPhone Retina */
-@media only screen and (min-width: 320px) {
 
+.model-definition__predefined-variables {
+  grid-area: predefined-variables;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "countries" "indicators";
 }
-/*Extra small devices, phones*/
-@media only screen and (min-width: 480px) {
 
+.model-definition__model-settings {
+  grid-area: model-settings;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "model-type" "data-source";
 }
-/*Small devices, Tablets*/
-@media only screen and (min-width: 768px) {
-}
-/*Medium devices, Desktop*/
-@media only screen and (min-width: 992px) {
-}
-/*Large devices, Wide screens*/
-@media only screen and (min-width: 1200px) {
 
+.model-definition__predefined-variables__countries {
+  grid-area: countries;
 }
+
+.model-definition__predefined-variables__indicators {
+  grid-area: indicators;
+}
+.model-definition__model-settings__model-type {
+  grid-area: model-type;
+}
+.model-definition__model-settings_data-source {
+  grid-area: data-source;
+}
+
+.model-variables {
+}
+
+.model-data {
+  grid-area: model-data;
+  padding: 0 1em 1em 1em;
+}
+
+
+///*custom, iPhone Retina */
+//@media only screen and (min-width: 320px) {
+//
+//}
+///*Extra small devices, phones*/
+//@media only screen and (min-width: 480px) {
+//
+//}
+///*Small devices, Tablets*/
+//@media only screen and (min-width: 768px) {
+//}
+///*Medium devices, Desktop*/
+//@media only screen and (min-width: 992px) {
+//}
+///*Large devices, Wide screens*/
+//@media only screen and (min-width: 1200px) {
+//
+//}

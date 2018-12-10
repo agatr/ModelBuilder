@@ -47,6 +47,9 @@
     "@babel/runtime": "^7.1.5",
     "@tensorflow/tfjs": "^0.13.5",
     "axios": "^0.18.0",
-    "ml-regression": "^4.4.2"
+    "d3": "3",
+    "ml-regression": "^4.4.2",
+    "react-charts": "^2.0.0-alpha.12",
+    "react-csv-reader": "^1.1.0"
   }
 }

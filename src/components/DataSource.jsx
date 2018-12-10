@@ -12,7 +12,8 @@ class DataSource extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="model-definition__model-settings_data-source">
+                <p>Data source:</p>
                 <select name="dataSource" id="ds" onChange={this.onChange}>
                     <option value="World Bank">World Bank</option>
                     <option value="Own data">Own data</option>

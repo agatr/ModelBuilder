@@ -1,7 +1,7 @@
-export default function (state = [1,2,3], action) {
+export default function (state = ['upload file'], action) {
 
     switch(action.type) {
-        case 'SET_DATA_X':
+        case 'SET_HEADER':
             return action.payload
     }
     return state;

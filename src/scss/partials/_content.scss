@@ -1,0 +1,21 @@
+.model-output{
+  grid-area: model-output;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "model-equation" "model-graph";
+  padding: 1em;
+}
+
+.model-output__equation {
+  grid-area: model-equation;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#loss{
+  justify-content: end;
+  display: grid;
+}
+
+.model-output__graph {
+  grid-area: model-graph;
+}

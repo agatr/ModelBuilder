@@ -1,6 +1,7 @@
 import React from "react";
 import {ModelSettings} from './ModelSettings.jsx';
-import {PredefinedVariables} from "./PredefinedVariables.jsx";
+import PredefinedVariables from "./PredefinedVariables.jsx";
+import ModelVariables from "./ModelVariables.jsx";
 
 export class ModelDefinition extends React.Component {
     constructor() {
@@ -9,10 +10,10 @@ export class ModelDefinition extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="model-definition">
                 <ModelSettings/>
                 <PredefinedVariables/>
-
+                <ModelVariables/>
             </div>
         )
     }

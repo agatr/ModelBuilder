@@ -19,20 +19,13 @@ import iterationsReducer from './reducers/iterationsReducer.jsx';
 import aReducer from './reducers/aReducer.jsx';
 import bReducer from './reducers/bReducer.jsx';
 import lossValueReducer from './reducers/lossValueReducer.jsx';
-require ('../dist/main.css');
-
-class Header extends React.Component {
-    constructor() {
-        super();
-    }
-    render(){
-        return (
-            <header>
-
-            </header>
-        )
-    }
- }
+import fileDataReducer from './reducers/fileDataReducer.jsx';
+import fileDataHeaderReducer from './reducers/fileDataHeaderReducer.jsx';
+import indicatorsReducer from './reducers/indicatorsReducer.jsx';
+require ('./scss/main.scss');
+import {Header} from "./components/Header.jsx";
+import {Footer} from "./components/Footer.jsx";
+import UploadVariables from "./components/UploadVariables.jsx";
 
 const reducers = combineReducers({
     modelType: modelTypeReducer,
@@ -46,7 +39,10 @@ const reducers = combineReducers({
     iterations: iterationsReducer,
     a: aReducer,
     b: bReducer,
-    loss: lossValueReducer
+    loss: lossValueReducer,
+    fileData: fileDataReducer,
+    fileDataHeader: fileDataHeaderReducer,
+    indicators: indicatorsReducer
 });
 
 const store = createStore(reducers);
@@ -60,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         render() {
             return (
-                <div>
-
+                <div className="wrapper">
+                    <Header/>
                     <ModelDefinition/>
-                    <ModelVariables/>
                     <ModelData/>
                     <ModelOutput/>
+                    <Footer/>
                 </div>
             )
         }

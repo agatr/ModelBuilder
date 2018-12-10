@@ -1,0 +1,18 @@
+@import '../variables/colors.scss';
+
+select {
+  background-color: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid $background-secondary-color;
+  width: 80%;
+}
+
+input {
+  background-color: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid $background-secondary-color;
+}

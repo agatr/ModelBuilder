@@ -1,4 +1,4 @@
-export default function (state = "", action) {
+export default function (state = "World Bank", action) {
 
     switch(action.type) {
         case 'CHOOSE_SOURCE':

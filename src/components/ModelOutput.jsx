@@ -1,6 +1,6 @@
 import React from "react";
 import ModelEquation from './ModelEquation.jsx';
-import {Graph} from './Graph.jsx';
+import Graph from './Graph.jsx';
 
 export class ModelOutput extends React.Component {
     constructor() {
@@ -8,8 +8,7 @@ export class ModelOutput extends React.Component {
     }
     render(){
         return (
-            <div>
-                <h4>model output</h4>
+            <div className="model-output">
                 <ModelEquation/>
                 <Graph/>
             </div>

@@ -1,21 +1,35 @@
+@import '../variables/colors.scss';
+
 .header {
-  background-color: orange;
+  background-color: darken($background-main-color,20%);
+  grid-area: header;
+  min-height: 4em;
+  display: grid;
+  align-items: center;
+  padding: 1em;
+  //margin: 0.5em;
 }
-/*custom, iPhone Retina */
-@media only screen and (min-width: 320px) {
+a.logo {
+    text-decoration: none;
+    color: #fff;
+  font-weight: 900;
+}
 
-}
-/*Extra small devices, phones*/
-@media only screen and (min-width: 480px) {
-
-}
-/*Small devices, Tablets*/
-@media only screen and (min-width: 768px) {
-}
-/*Medium devices, Desktop*/
-@media only screen and (min-width: 992px) {
-}
-/*Large devices, Wide screens*/
-@media only screen and (min-width: 1200px) {
-
-}
+///*custom, iPhone Retina */
+//@media only screen and (min-width: 320px) {
+//
+//}
+///*Extra small devices, phones*/
+//@media only screen and (min-width: 480px) {
+//
+//}
+///*Small devices, Tablets*/
+//@media only screen and (min-width: 768px) {
+//}
+///*Medium devices, Desktop*/
+//@media only screen and (min-width: 992px) {
+//}
+///*Large devices, Wide screens*/
+//@media only screen and (min-width: 1200px) {
+//
+//}

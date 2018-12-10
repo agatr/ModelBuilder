@@ -1,0 +1,17 @@
+@import '../variables/colors.scss';
+
+.btn {
+  background-color: transparent;
+  color: #fff;
+  padding: 0.5em 2.5em 0.5em 2.5em;
+  border-radius: 25px;
+  border: 1px solid #fff;
+  cursor: pointer;
+
+  &:hover{
+    transform: translateY(-3px);
+    background-color: #fff;
+    color: $background-main-color;
+  }
+}
+

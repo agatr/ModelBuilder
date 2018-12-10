@@ -9,7 +9,7 @@ export class ModelSettings extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="model-definition__model-settings">
                 <ModelType/>
                 <DataSource/>
             </div>

@@ -17,11 +17,11 @@ class Indicators extends React.Component {
             .then(response => {
                 let indicators = response.data[1];
 
-                this.setState({
-                    indicators: indicators.map(e => {
+                this.props.loadIndicators(
+                    indicators.map(e => {
                         return {name: e.name, id: e.id}
                     })
-                });
+                )
             });
     };
 
@@ -34,24 +34,13 @@ class Indicators extends React.Component {
     }
 
     render() {
-        if (this.state.indicators !== []) {
-            return (
-                <div>
-                    <select name="indicators" id="indicators" onChange={this.addIndicator}>
-                        {this.state.indicators.map(e => {
-                            return <option key={e.id} value={e.id}>{e.name}</option>
-                        })}
-                    </select>
-                </div>
-            )
-        } else {
-            return null;
-        }
+        return (<div></div>)
     }
 }
 function mapStateToProps(store) {
     return {
-        predefinedIndicators: store.predefinedIndicators
+        predefinedIndicators: store.predefinedIndicators,
+        indicators: store.indicators
     }
 }
 
@@ -59,6 +48,9 @@ function mapDispatchToProps(dispatch) {
     return {
         addPredefinedIndicator: type => {
             dispatch({type: 'ADD_INDICATOR', payload: type})
+        },
+        loadIndicators: type => {
+            dispatch({type: 'LOAD_INDICATORS', payload: type})
         }
     }
 }

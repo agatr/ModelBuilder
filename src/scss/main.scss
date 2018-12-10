@@ -1,21 +1,42 @@
-@import '/partials/header.scss';
-@import '/partials/footer.scss';
-@import '/partials/content.scss';
-@import '/partials/sidebar.scss';
+@import 'partials/header.scss';
+@import 'partials/content.scss';
+@import 'partials/sidebar.scss';
+@import 'partials/footer.scss';
+@import 'components/select.scss';
+@import 'components/tag.scss';
+@import 'components/button.scss';
+@import 'variables/colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  background-color: orange;
+  background-color: $background-main-color;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .wrapper{
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1em;
   grid-template-areas:
           "header"
-          "sidebar"
-          "content"
-          "footer"
+          "model-definition"
+          "model-data"
+          "model-output"
+          "footer";
+  font-size: 12px;
 }
 /*custom, iPhone Retina */
 @media only screen and (min-width: 320px) {
@@ -27,28 +48,26 @@ body {
 }
 /*Small devices, Tablets*/
 @media only screen and (min-width: 768px) {
-  .wrapper {
+  .wrapper{
     grid-template-columns: 30% auto;
     grid-template-areas:
             "header header"
-            "sidebar content"
-            "content content"
+            "model-definition model-output"
+            "model-data model-output"
             "footer footer"
   }
 }
+
 /*Medium devices, Desktop*/
 @media only screen and (min-width: 992px) {
-  .wrapper {
-    grid-template-columns: 40% auto;
-    grid-template-areas:
-            "header header"
-            "sidebar content"
-            "content content"
-            "footer footer"
-  }
+
 }
 /*Large devices, Wide screens*/
 @media only screen and (min-width: 1200px) {
 
 }
 
+.jxgbox{
+  width: 500px;
+  height: 500px;
+}

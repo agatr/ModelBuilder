@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 class ModelVariables extends React.Component {
     constructor() {
         super();
+
     }
 
     chooseX = (e) => {
@@ -16,31 +17,43 @@ class ModelVariables extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.props.modelType}
-                {this.props.dataSource}
-                {this.props.predefinedCountries}
-                {this.props.predefinedIndicators}
-                <h1>Test</h1>
-
+            <div className="model-variables">
                 <div>
-                    <h2>model variables:</h2>
-                    <p>y: {this.props.y}</p>
-                    <select name="" id="" onChange={this.chooseY}>
-                        {this.props.predefinedIndicators.map(e => {
-                            return <option value={e} key={e}>{e}</option>
-                        })}
-                    </select>
+                    {this.props.dataSource === 'World Bank' ?
+                    <>
+                        <p>Dependent variable:</p>
+                        {this.props.y}
+                        <select name="" id="" onChange={this.chooseY}>
+                            {this.props.indicators.map((e,i) => {
+                                return <option value={e.id} key={i}>{e.id}-{e.name}</option>
+                            })}
+                        </select>
 
-                    <p>x: {this.props.x}</p>
-                    <select name="" id="" onChange={this.chooseX}>
-                        {this.props.predefinedIndicators.map(e => {
-                            return <option value={e} key={e}>{e}</option>
-                        })}
-                    </select>
+                        <p>Independent variable:</p>
+                        <select name="" id="" onChange={this.chooseX}>
+                            {this.props.indicators.map((e,i) => {
+                                return <option value={e.id} key={i}>{e.name}</option>
+                            })}
+                        </select>
+                    </>
+                    : <>
+                            <p>Dependent variable:</p>
+                            <select name="" onChange={this.chooseX}>
+                                {this.props.fileDataHeader.map((e,i)=>{
+                                    return <option key={i} value={i}>{e}</option>
+                                })}
+                            </select>
+                            <p>Independent variable:</p>
+                            <select name="" onChange={this.chooseY}>
+                                {this.props.fileDataHeader.map((e,i)=>{
+                                    return <option key={i} value={i}>{e}</option>
+                                })}
+                            </select>
+                        </>
+                    }
+
+
                 </div>
-
-
             </div>
 
         )
@@ -53,7 +66,9 @@ function mapStateToProps(store) {
         predefinedCountries: store.predefinedCountries,
         predefinedIndicators: store.predefinedIndicators,
         x: store.x,
-        y: store.y
+        y: store.y,
+        fileDataHeader: store.fileDataHeader,
+        indicators: store.indicators
     }
 }
 

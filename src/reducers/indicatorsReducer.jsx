@@ -1,7 +1,7 @@
-export default function (state = [1,2,3], action) {
+export default function (state = ['choose'], action) {
 
     switch(action.type) {
-        case 'SET_DATA_X':
+        case 'LOAD_INDICATORS':
             return action.payload
     }
     return state;
