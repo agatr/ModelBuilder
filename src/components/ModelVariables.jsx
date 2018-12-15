@@ -1,14 +1,20 @@
 import React from "react";
 import {connect} from 'react-redux';
+import {getDataFromFile} from './ModelData.jsx'
+
 
 class ModelVariables extends React.Component {
     constructor() {
         super();
-
     }
 
     chooseX = (e) => {
         this.props.chooseX(e.target.value)
+
+        // let arr = [];
+        // this.props.fileData.forEach((e) => {
+        //     arr.push(Number(e[this.props.x]))
+        // },this.props.setXData(arr))
     }
 
     chooseY = (e) => {
@@ -72,6 +78,7 @@ function mapStateToProps(store) {
         x: store.x,
         y: store.y,
         fileDataHeader: store.fileDataHeader,
+        fileData: store.fileData,
         indicators: store.indicators
     }
 }
@@ -83,6 +90,12 @@ function mapDispatchToProps(dispatch) {
         },
         chooseY: typeY => {
             dispatch({type: 'CHOOSE_Y', payload: typeY})
+        },
+        setXData: typeX => {
+            dispatch({type: 'SET_DATA_X', payload: typeX})
+        },
+        setYData: typeY => {
+            dispatch({type: 'SET_DATA_Y', payload: typeY})
         }
     }
 }

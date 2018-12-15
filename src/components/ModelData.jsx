@@ -4,6 +4,23 @@ import axios from "axios/index";
 import {connect} from 'react-redux';
 import * as tf from "@tensorflow/tfjs/dist/index";
 
+// const getXDataFromFile = () => {
+//     console.log('test')
+//     let arr = [];
+//     this.props.fileData.forEach((e) => {
+//         arr.push(e[this.props.x])
+//     },this.props.setXData(arr))
+// }
+
+// const getDataFromFile = (fileData, variable, func) => {
+//     console.log('test')
+//     let arr = [];
+//     fileData.forEach((e) => {
+//         arr.push(e[variable])
+//     },func(arr))
+// }
+
+
 class ModelData extends React.Component {
     constructor() {
         super();
@@ -41,13 +58,8 @@ class ModelData extends React.Component {
 
     }
 
-    getXDataFromFile = () => {
-        let arr = [];
-        console.log('date', this.props.fileData);
-        console.log('index ', this.props.x);
-        this.props.fileData.forEach((e) => {
-            arr.push(e[this.props.x])
-        },this.props.setXData(arr))
+    componentDiDMount(){
+
     }
 
     getYDataFromFile = () => {
@@ -55,6 +67,13 @@ class ModelData extends React.Component {
         this.props.fileData.forEach((e) => {
             arr.push(Number(e[this.props.y]))
         },this.props.setYData(arr))
+    }
+
+    getXDataFromFile = () => {
+        let arr = [];
+        this.props.fileData.forEach((e) => {
+            arr.push(Number(e[this.props.x]))
+        },this.props.setXData(arr))
     }
 
     setIterations = (e) => {
@@ -79,6 +98,9 @@ class ModelData extends React.Component {
                 //     this.trainModel();
                 // }
                 this.getXDataFromFile();
+                // getDataFromFile(this.props.fileData, this.props.x, this.props.setXData)
+                //
+                // getDataFromFile(this.props.fileData, this.props.y, this.props.setYData)
                 this.getYDataFromFile();
                 this.trainModel();
                 break;
@@ -225,11 +247,6 @@ class ModelData extends React.Component {
 
     }
 
-    componentDidMount() {
-        //this.getModelData();
-        //this.trainModel();
-    }
-
     render() {
        return (
             <div className="model-data">
@@ -301,3 +318,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModelData);
+
+export { getDataFromFile };
