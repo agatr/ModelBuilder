@@ -9,7 +9,6 @@ class ModelData extends React.Component {
         super();
     }
 
-    //API request for variable X data
     getXData = () => {
         // let url = 'http://api.worldbank.org/v2/countries/'+this.props.predefinedCountries+'/indicators/'+this.props.x+'?format=json';
 
@@ -44,8 +43,8 @@ class ModelData extends React.Component {
 
     getXDataFromFile = () => {
         let arr = [];
-        console.log(this.props.fileData);
-        console.log(this.props.x);
+        console.log('date', this.props.fileData);
+        console.log('index ', this.props.x);
         this.props.fileData.forEach((e) => {
             arr.push(e[this.props.x])
         },this.props.setXData(arr))
@@ -63,21 +62,25 @@ class ModelData extends React.Component {
     }
 
     getModelData = () => {
-        console.log(this.props.dataSource);
         switch (this.props.dataSource) {
             case 'World Bank':
                 if (this.props.x !== 'Choose X' && this.props.y !== 'Choose Y') {
                     this.getXData();
                     this.getYData();
-                } else {
-                    console.log('choose both x and y')
+                    this.trainModel();
                 }
                 break;
             case 'Own data':
-                console.log('own');
+                // if(this.props.fileDataHeader == 'upload file') {
+                //     this.setState({fileUploaded: false})
+                // } else {
+                //     this.getXDataFromFile();
+                //     this.getYDataFromFile();
+                //     this.trainModel();
+                // }
                 this.getXDataFromFile();
                 this.getYDataFromFile();
-                console.log(this.props.xData);
+                this.trainModel();
                 break;
             default:
                 console.log('ss')
@@ -87,7 +90,7 @@ class ModelData extends React.Component {
     trainModel = () => {
         console.log('training model')
 
-//START MODEL GENERATION
+        //START MODEL GENERATION
         //Initialize coefitients
         //y = ax+b
         //y-we're looking for prediction of this value (output)
@@ -108,7 +111,7 @@ class ModelData extends React.Component {
         //loss function - measures how well model (equation) fits the data
         // mean squared error (MSE) - avg((y_pred - y_real)^2)
         function loss(y_predicted, y_observed) {
-            const meanSquareError = y_predicted.sub(y_observed).square().mean();
+            const meanSquareError = (y_predicted.sub(y_observed)).square().mean();
             //console.log(meanSquareError.toString());
             return meanSquareError;
         }
@@ -121,8 +124,8 @@ class ModelData extends React.Component {
         //let {setLoss} = this.props;
 
         //training loop - run optimizer to minimize loss function
-        async function train(xs, ys, iterations){
-            const learningRate = 0.01;
+        async function train(xs, ys, iterations, learningRate){
+            // const learningRate = 0.01;
             const optimizer = tf.train.sgd(learningRate);
             let lossVal;
 
@@ -131,12 +134,9 @@ class ModelData extends React.Component {
                     const predicted_ys = predict(xs);
                     lossVal = loss(predicted_ys, ys);
                     lossValue = lossVal.dataSync();
-                    console.log(lossValue);
+                    console.log('loss ',lossValue);
                     return lossVal;
                 })
-                //     .then(res => {
-                //     console.log('then ',res)
-                // })
             }
         }
 
@@ -146,7 +146,7 @@ class ModelData extends React.Component {
             const x_train = tf.tensor(this.props.xData);
             const y_train = tf.tensor(this.props.yData);
 
-            train(x_train, y_train, this.props.iterations).then(() => {
+            train(x_train, y_train, this.props.iterations, this.props.learningRate).then(() => {
                 console.log('training complete');
                 console.log('loss function ' + parseFloat(lossValue));
                 console.log('type ' + parseFloat(Number(lossValue.toString())));
@@ -155,42 +155,95 @@ class ModelData extends React.Component {
             });
         }
 
-        // const x_train = tf.tensor([1,2,3]);
-        // const y_train = tf.tensor([1,2,3]);
-        //
-        // train(x_train, y_train, this.props.iterations).then(() => {
-        //     console.log('training complete');
-        //     console.log('loss function ' + parseFloat(lossValue));
-        //     console.log('type ' + parseFloat(Number(lossValue.toString())));
-        //     console.log('test ' + parseFloat(10.21313131).toFixed(2));
-        //     a.print();
-        //     b.print();
-        // });
-
         a.print();
         this.props.setA(parseFloat(a.dataSync()).toFixed(2));
         this.props.setB(parseFloat(b.dataSync()).toFixed(2));
-        this.props.setLoss(parseFloat(lossValue).toFixed(2));
+        this.props.setLoss(lossValue);
 
         //END OF MODEL GENERATION
     }
 
+    setLearningRate = (e) => {
+        this.props.setLearningRate(e.target.value)
+    }
+
+    trainQuadraticRegressionModel = (e) => {
+        let a = tf.variable(tf.scalar(Math.random(1)));
+        let b = tf.variable(tf.scalar(Math.random(1)));
+        let c = tf.variable(tf.scalar(Math.random(1)));
+        let lossValue;
+
+        //prediction function that takes as inout x and generates y
+        function predict(x) {
+            return tf.tidy(() => {
+                    return c.mul(x).mul(x).add(c).mul(x).add(b);
+                }
+            )
+        }
+
+        function loss(y_predicted, y_observed) {
+            const meanSquareError = y_predicted.sub(y_observed).square().mean();
+            return meanSquareError;
+        }
+
+        //training loop - run optimizer to minimize loss function
+        async function train(xs, ys, iterations){
+            const learningRate = this.props.learningRate;
+            const optimizer = tf.train.sgd(learningRate);
+            let lossVal;
+
+            for (let i = 0; i < iterations; i++) {
+                optimizer.minimize(() => {
+                    const predicted_ys = predict(xs);
+                    lossVal = loss(predicted_ys, ys);
+                    lossValue = lossVal.dataSync();
+                    console.log('loss value:', lossValue);
+                    return lossVal;
+                })
+            }
+        }
+
+
+        if (this.props.xData.length > 0) {
+            const x_train = tf.tensor(this.props.xData);
+            const y_train = tf.tensor(this.props.yData);
+
+            train(x_train, y_train, this.props.iterations).then(() => {
+                console.log('training complete');
+                console.log('loss function ' + parseFloat(lossValue));
+                console.log('type ' + parseFloat(Number(lossValue.toString())));
+                a.print();
+                b.print();
+                c.print();
+            });
+        }
+
+        this.props.setA(parseFloat(a.dataSync()).toFixed(2));
+        this.props.setB(parseFloat(b.dataSync()).toFixed(2));
+        this.props.setC(parseFloat(c.dataSync()).toFixed(2));
+        this.props.setLoss(parseFloat(lossValue).toFixed(2));
+
+    }
 
     componentDidMount() {
-        this.getModelData();
-        this.trainModel();
+        //this.getModelData();
+        //this.trainModel();
     }
 
     render() {
-        return (
+       return (
             <div className="model-data">
-                <p>Number of iterations</p>
-                <input type="number" value={this.props.iterations} onChange={this.setIterations}/><br/>
-                {/*<button className="btn" onClick={()=>{this.getModelData; this.trainModel()}}>Generate model</button>*/}
-                <button className="btn" onClick={this.getModelData}>data model</button>
-                <button className="btn" onClick={this.trainModel}>Generate model</button>
-                {this.props.xData}
-                {this.props.yData}
+                <div className="model-data__iterations model-el">
+                    <p>Number of iterations</p>
+                    <input type="number" step="1" value={this.props.iterations} onChange={this.setIterations}/>
+                </div>
+                <div className="model-data__learning-rate model-el">
+                    <p>Learning rate</p>
+                    <input type="number" value={this.props.learningRate} step="0.01" onChange={this.setLearningRate}/>
+                </div>
+                <div className="model-el">
+                    <button className="btn model-el" onClick={this.getModelData} disabled={this.props.btnDisabled}>Generate model</button>
+                </div>
             </div>
         )
     }
@@ -208,9 +261,13 @@ function mapStateToProps(store) {
         yData: store.yData,
         iterations: store.iterations,
         fileData: store.fileData,
+        fileDataHeader: store.fileDataHeader,
         a: store.a,
         b: store.b,
-        loss: store.loss
+        c: store.c,
+        loss: store.loss,
+        learningRate: store.learningRate,
+        btnDisabled: store.btnDisabled
     }
 }
 
@@ -231,8 +288,14 @@ function mapDispatchToProps(dispatch) {
         setB: bValue => {
             dispatch({type: 'SET_B', payload: bValue})
         },
+        setC: cValue => {
+            dispatch({type: 'SET_C', payload: cValue})
+        },
         setLoss: lossValue => {
             dispatch({type: 'SET_LOSS', payload: lossValue})
+        },
+        setLearningRate: learningRate => {
+            dispatch({type: 'SET_LEARNING_RATE', payload: learningRate})
         }
     }
 }

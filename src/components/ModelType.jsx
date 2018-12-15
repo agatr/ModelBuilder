@@ -12,11 +12,11 @@ class ModelType extends React.Component {
 
     render() {
         return (
-            <div className="model-definition__model-settings__model-type">
+            <div className="model-definition__model-settings__model-type model-el">
                 <p>Model type:</p>
                 <select name="modelType" id="modelType" onChange={this.onChange}>
                     <option key="lr" value="Linear Regression">Linear Regression</option>
-                    <option key="ml" value="Multiple regression">Multiple regression</option>
+                    <option key="ml" value="Multiple regression">Quadratic Regression</option>
                 </select>
             </div>
         )

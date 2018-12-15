@@ -18,6 +18,7 @@ import yDataReducer from './reducers/yDataReducer.jsx';
 import iterationsReducer from './reducers/iterationsReducer.jsx';
 import aReducer from './reducers/aReducer.jsx';
 import bReducer from './reducers/bReducer.jsx';
+import cReducer from './reducers/cReducer.jsx';
 import lossValueReducer from './reducers/lossValueReducer.jsx';
 import fileDataReducer from './reducers/fileDataReducer.jsx';
 import fileDataHeaderReducer from './reducers/fileDataHeaderReducer.jsx';
@@ -26,6 +27,8 @@ require ('./scss/main.scss');
 import {Header} from "./components/Header.jsx";
 import {Footer} from "./components/Footer.jsx";
 import UploadVariables from "./components/UploadVariables.jsx";
+import learningRateReducer from "./reducers/learningRateReducer.jsx"
+import btnDisabledReducer from "./reducers/btnDisabledReducer.jsx";
 
 const reducers = combineReducers({
     modelType: modelTypeReducer,
@@ -39,10 +42,13 @@ const reducers = combineReducers({
     iterations: iterationsReducer,
     a: aReducer,
     b: bReducer,
+    c: cReducer,
     loss: lossValueReducer,
     fileData: fileDataReducer,
     fileDataHeader: fileDataHeaderReducer,
-    indicators: indicatorsReducer
+    indicators: indicatorsReducer,
+    learningRate: learningRateReducer,
+    btnDisabled: btnDisabledReducer
 });
 
 const store = createStore(reducers);
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         render() {
             return (
                 <div className="wrapper">
-                    <Header/>
+                    {/*<Header/>*/}
                     <ModelDefinition/>
                     <ModelData/>
                     <ModelOutput/>

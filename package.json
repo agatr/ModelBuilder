@@ -48,8 +48,10 @@
     "@tensorflow/tfjs": "^0.13.5",
     "axios": "^0.18.0",
     "d3": "3",
+    "mathjs": "^5.4.0",
     "ml-regression": "^4.4.2",
     "react-charts": "^2.0.0-alpha.12",
-    "react-csv-reader": "^1.1.0"
+    "react-csv-reader": "^1.1.0",
+    "recharts": "^1.4.1"
   }
 }

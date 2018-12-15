@@ -97,7 +97,7 @@ class Countries extends React.Component {
     render() {
         if (this.state.countries !== []) {
             return (
-                <div className="model-definition__predefined-variables__countries">
+                <div className="model-definition__predefined-variables__countries model-el">
                     <p>Country:</p>
                     <select name="countries" id="countries" onChange={this.addCountry}>
                         {this.state.countries.map(e => {

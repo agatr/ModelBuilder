@@ -21,38 +21,42 @@ class ModelVariables extends React.Component {
                 <div>
                     {this.props.dataSource === 'World Bank' ?
                     <>
-                        <p>Dependent variable:</p>
-                        {this.props.y}
-                        <select name="" id="" onChange={this.chooseY}>
-                            {this.props.indicators.map((e,i) => {
-                                return <option value={e.id} key={i}>{e.id}-{e.name}</option>
-                            })}
-                        </select>
-
-                        <p>Independent variable:</p>
-                        <select name="" id="" onChange={this.chooseX}>
-                            {this.props.indicators.map((e,i) => {
-                                return <option value={e.id} key={i}>{e.name}</option>
-                            })}
-                        </select>
+                        <div className="model-variables__dependent-variable model-el">
+                            <p>Dependent variable:</p>
+                            <select name="" id="" onChange={this.chooseY}>
+                                {this.props.indicators.map((e,i) => {
+                                    return <option value={e.id} key={i}>{e.name}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div className="model-variables__independent-variable model-el">
+                            <p>Independent variable:</p>
+                            <select name="" id="" onChange={this.chooseX}>
+                                {this.props.indicators.map((e,i) => {
+                                    return <option value={e.id} key={i}>{e.name}</option>
+                                })}
+                            </select>
+                        </div>
                     </>
                     : <>
-                            <p>Dependent variable:</p>
-                            <select name="" onChange={this.chooseX}>
-                                {this.props.fileDataHeader.map((e,i)=>{
-                                    return <option key={i} value={i}>{e}</option>
-                                })}
-                            </select>
-                            <p>Independent variable:</p>
-                            <select name="" onChange={this.chooseY}>
-                                {this.props.fileDataHeader.map((e,i)=>{
-                                    return <option key={i} value={i}>{e}</option>
-                                })}
-                            </select>
+                            <div className="model-variables__dependent-variable model-el">
+                                <p>Dependent variable:</p>
+                                <select name="" onChange={this.chooseY}>
+                                    {this.props.fileDataHeader.map((e,i)=>{
+                                        return <option key={i} value={i}>{e}</option>
+                                    })}
+                                </select>
+                            </div>
+                            <div className="model-variables__independent-variable model-el">
+                                <p>Independent variable:</p>
+                                <select name="" onChange={this.chooseX}>
+                                    {this.props.fileDataHeader.map((e,i)=>{
+                                        return <option key={i} value={i}>{e}</option>
+                                    })}
+                                </select>
+                            </div>
                         </>
                     }
-
-
                 </div>
             </div>
 

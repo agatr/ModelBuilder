@@ -1,7 +1,7 @@
-export default function (state = "", action) {
+export default function (state = "Linear Regression", action) {
 
     switch(action.type) {
-        case 'CHOOSE_X':
+        case 'CHOOSE_TYPE':
             return action.payload
     }
 

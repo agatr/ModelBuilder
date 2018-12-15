@@ -2,20 +2,84 @@
   grid-area: model-output;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "model-equation" "model-graph";
-  padding: 1em;
+  grid-template-areas:
+          "model-equation"
+          "descriptive-statistics"
+          "model-graph";
+  padding: 1em 3em 2em 3em;
 }
 
 .model-output__equation {
   grid-area: model-equation;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
+
+.model-output__descriptive-statistics{
+  grid-area: descriptive-statistics;
+}
+
 #loss{
-  justify-content: end;
+  justify-content: start;
   display: grid;
 }
 
 .model-output__graph {
   grid-area: model-graph;
+  padding: 3em 0 0 0;
+  display: none;
+}
+
+/*custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+
+}
+/*Extra small devices, phones*/
+@media only screen and (min-width: 480px) {
+  .model-output__descriptive-statistics{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .model-output__graph {
+    grid-area: model-graph;
+    display: block;
+  }
+
+  .model-output{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+            "model-equation"
+            "descriptive-statistics"
+            "model-graph"
+  }
+}
+/*Small devices, Tablets*/
+@media only screen and (min-width: 768px) {
+  .model-output{
+    grid-template-columns: 20% 80%;
+    grid-template-areas: "model-equation model-equation"
+    "descriptive-statistics model-graph";
+    padding: 1em 3em 3em 3em;
+  }
+  .model-output__equation {
+    grid-area: model-equation;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #loss{
+    justify-content: end;
+    display: grid;
+  }
+  .model-output__descriptive-statistics{
+    grid-area: descriptive-statistics;
+    grid-template-columns: 1fr;
+  }
+}
+/*Medium devices, Desktop*/
+@media only screen and (min-width: 992px) {
+}
+/*Large devices, Wide screens*/
+@media only screen and (min-width: 1200px) {
+
 }

@@ -1,46 +1,56 @@
 @import '../variables/colors.scss';
 
 .footer {
-  background-color: darken($background-secondary-color,20%);
+  background-color: darken($background-main-color,10%);
   grid-area: footer;
   display: grid;
-  grid-gap: 10px;
   grid-template-columns: 1fr;
   grid-template-areas: "footer-links" "footer-copyright";
+
+  h4 {
+    font-size: 1.1em;
+  }
 }
 
 .footer__links {
   grid-area: footer-links;
   display: grid;
-  grid-gap: 10px;
   grid-template-columns: 1fr;
   grid-template-areas: "footer-product" "footer-help" "footer-contact";
-  background-color: $background-secondary-color;
-  padding: 1em;
+  background-color: darken($background-main-color,5%);
+  padding: 1em 3em 1em 3em;
 }
 
 .footer__copyright {
   grid-area: footer-copyright;
-  padding: 1em;
+  padding: 0.5em 3em 0.5em 3em;
 }
-
 .footer__links__product {
   grid-area: footer-product;
 }
 .footer__links__help {
   grid-area: footer-help;
+  padding: 1em 0 0 0;
 }
 .footer__links__contact {
   grid-area: footer-contact;
+  padding: 1em 0 0 0;
 }
 
-
-///*custom, iPhone Retina */
-//@media only screen and (min-width: 320px) {
-//
-//}
 /*Extra small devices, phones*/
 @media only screen and (min-width: 480px) {
+  .footer__links {
+    grid-area: footer-links;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+            "footer-product footer-help"
+            "footer-contact .";
+  }
+}
+/*Small devices, Tablets*/
+@media only screen and (min-width: 768px) {
   .footer__links {
     grid-area: footer-links;
     display: grid;
@@ -49,15 +59,3 @@
     grid-template-areas: "footer-product footer-help footer-contact";
   }
 }
-/*Small devices, Tablets*/
-@media only screen and (min-width: 768px) {
-
-}
-///*Medium devices, Desktop*/
-//@media only screen and (min-width: 992px) {
-//}
-///*Large devices, Wide screens*/
-//@media only screen and (min-width: 1200px) {
-//
-//}
-//

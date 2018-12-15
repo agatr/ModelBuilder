@@ -1,18 +1,18 @@
 @import '../variables/colors.scss';
 
 .header {
-  background-color: darken($background-main-color,20%);
+  background-color: $background-main-color;
   grid-area: header;
   min-height: 4em;
   display: grid;
   align-items: center;
-  padding: 1em;
+  padding: 0 3em 0 3em;
   //margin: 0.5em;
 }
 a.logo {
     text-decoration: none;
     color: #fff;
-  font-weight: 900;
+    font-weight: 900;
 }
 
 ///*custom, iPhone Retina */

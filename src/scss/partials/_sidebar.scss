@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "model-settings" "predefined-variables";
-  padding: 1em 1em 0 1em;
+  padding: 0 3em 0 3em;
 }
 
 .model-definition__predefined-variables {
@@ -39,25 +39,9 @@
 
 .model-data {
   grid-area: model-data;
-  padding: 0 1em 1em 1em;
+  padding: 0 3em 3em 3em;
 }
 
-
-///*custom, iPhone Retina */
-//@media only screen and (min-width: 320px) {
-//
-//}
-///*Extra small devices, phones*/
-//@media only screen and (min-width: 480px) {
-//
-//}
-///*Small devices, Tablets*/
-//@media only screen and (min-width: 768px) {
-//}
-///*Medium devices, Desktop*/
-//@media only screen and (min-width: 992px) {
-//}
-///*Large devices, Wide screens*/
-//@media only screen and (min-width: 1200px) {
-//
-//}
+.model-el {
+  padding: 1em 0 0 0;
+}

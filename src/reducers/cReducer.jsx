@@ -1,7 +1,7 @@
-export default function (state = 0, action) {
+export default function (state = '', action) {
 
     switch(action.type) {
-        case 'SET_B':
+        case 'SET_C':
             return action.payload
     }
     return state;

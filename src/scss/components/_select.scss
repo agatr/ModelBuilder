@@ -6,13 +6,25 @@ select {
   border-right: 0;
   border-left: 0;
   border-bottom: 1px solid $background-secondary-color;
-  width: 80%;
+  width: 100%;
+  color: $secondary-color;
 }
 
-input {
-  background-color: transparent;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-bottom: 1px solid $background-secondary-color;
+@media only screen and (min-width: 320px) {
+
+}
+/*Extra small devices, phones*/
+@media only screen and (min-width: 480px) {
+
+}
+/*Small devices, Tablets*/
+@media only screen and (min-width: 768px) {
+  width: 80%;
+}
+/*Medium devices, Desktop*/
+@media only screen and (min-width: 992px) {
+}
+/*Large devices, Wide screens*/
+@media only screen and (min-width: 1200px) {
+
 }

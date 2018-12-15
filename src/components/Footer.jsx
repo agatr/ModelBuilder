@@ -13,10 +13,10 @@ export class Footer extends React.Component {
                         <h4>MODEL BUILDER</h4>
                         <div>
                             <ul>
-                                <li><a href="">Link 1</a></li>
-                                <li><a href="">Link 2</a></li>
-                                <li><a href="">Link 3</a></li>
-                                <li><a href="">Link 4</a></li>
+                                <li><a href="">Creators</a></li>
+                                <li><a href="">Technology</a></li>
+                                <li><a href="">Contribute</a></li>
+                                <li><a href="">Github</a></li>
                             </ul>
                         </div>
                     </div>
@@ -24,10 +24,9 @@ export class Footer extends React.Component {
                         <h4>HELP</h4>
                         <div>
                             <ul>
-                                <li><a href="">Link 1</a></li>
-                                <li><a href="">Link 2</a></li>
-                                <li><a href="">Link 3</a></li>
-                                <li><a href="">Link 4</a></li>
+                                <li><a href="">FAQ</a></li>
+                                <li><a href="">Forum</a></li>
+                                <li><a href="">Ask a question</a></li>
                             </ul>
                         </div>
                     </div>
@@ -35,10 +34,10 @@ export class Footer extends React.Component {
                         <h4>CONTACT</h4>
                         <div>
                             <ul>
-                                <li><a href="">Link 1</a></li>
-                                <li><a href="">Link 2</a></li>
-                                <li><a href="">Link 3</a></li>
-                                <li><a href="">Link 4</a></li>
+                                <li><a href="">Contact Us</a></li>
+                                <li><a href="">Facebook</a></li>
+                                <li><a href="">Google</a></li>
+                                <li><a href="">Twitter</a></li>
                             </ul>
                         </div>
                     </div>

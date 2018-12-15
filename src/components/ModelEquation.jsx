@@ -109,9 +109,14 @@ class ModelEquation extends React.Component {
 
         return (
             <div className="model-output__equation">
-                <div>
-                    <h2>y = {this.props.a} x + {this.props.b}</h2>
-                </div>
+                {this.props.modelType === 'Linear Regression' ?
+                    <div>
+                        <h2>y = {this.props.a} x + {this.props.b}</h2>
+                    </div> :
+                    <div>
+                        <h2>y = {this.props.c} x<sup>2</sup> + {this.props.a} x + {this.props.b}</h2>
+                    </div>
+                }
                 <div id="loss">
                     <p>Loss: {this.props.loss}</p>
                 </div>
@@ -127,7 +132,8 @@ function mapStateToProps(store) {
         iterations: store.iterations,
         a: store.a,
         b: store.b,
-        loss: store.loss
+        loss: store.loss,
+        modelType: store.modelType
     }
 }
 
